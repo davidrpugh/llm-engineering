@@ -1,0 +1,14 @@
+name: llm-application-env
+
+channels:
+  - conda-forge
+  - nodefaults
+
+dependencies:
+  - jupyterlab
+  - pip
+  - pip:
+    - -r requirements.txt
+  - python=3.11
+  - zenml
+  

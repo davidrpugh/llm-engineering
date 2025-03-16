@@ -1,0 +1,21 @@
+name: llm-engineering
+
+services:
+
+  llm-application:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+      target: llm-application
+    command: [ "jupyter", "lab", "--allow-root", "--no-browser", "--ip", "0.0.0.0", --NotebookApp.token='' ]
+    container_name: llm-application
+    entrypoint: /root/entrypoint.sh
+    init: true
+    ports:
+      - "127.0.0.1:8888:8888" # Jupyter Lab Server
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./entrypoint.sh:/root/entrypoint.sh
+
